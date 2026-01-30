@@ -5,6 +5,7 @@ services:
   - type: web
     name: telegram-autopost-bot
     runtime: python
+    pythonVersion: "3.11.7"
     buildCommand: pip install -r requirements.txt
     startCommand: python main.py
     envVars:
