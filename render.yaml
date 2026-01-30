@@ -1,0 +1,23 @@
+# Render Blueprint для автоматического деплоя
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: telegram-autopost-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: WEBHOOK_URL
+        sync: false
+      - key: ALLOWED_USERS
+        sync: false
+      - key: TIMEZONE
+        value: Asia/Tashkent
+      - key: WEBHOOK_PATH
+        value: /webhook
+    healthCheckPath: /health
+    autoDeploy: true
+
